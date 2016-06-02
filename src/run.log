@@ -1,0 +1,457 @@
+Found length 3494 for currentDate 05.01.2015
+Found length 1936 for currentDate 06.01.2015
+Found length 3399 for currentDate 13.01.2015
+Found length 3234 for currentDate 13.01.2015
+Found length 4714 for currentDate 16.01.2015
+Found length 3519 for currentDate 26.01.2015
+Found length 3754 for currentDate 18.03.2015
+Found length 3754 for currentDate 18.03.2015
+Found length 1350 for currentDate 23.03.2015
+Found length 2794 for currentDate 24.03.2015
+Found length 3519 for currentDate 01.04.2015
+Found length 2119 for currentDate 01.04.2015
+Found length 2119 for currentDate 01.04.2015
+Found length 2119 for currentDate 01.04.2015
+Found length 3354 for currentDate 13.04.2015
+Found length 3354 for currentDate 16.04.2015
+Found length 3319 for currentDate 28.04.2015
+Found length 3364 for currentDate 11.05.2015
+Found length 3206 for currentDate 11.05.2015
+Found length 3494 for currentDate 12.05.2015
+Found length 3494 for currentDate 12.05.2015
+Found length 3494 for currentDate 12.05.2015
+Found length 3474 for currentDate 12.05.2015
+Found length 3440 for currentDate 12.05.2015
+Found length 3026 for currentDate 12.05.2015
+Found length 2779 for currentDate 15.06.2015
+Found length 2754 for currentDate 15.06.2015
+Found length 2754 for currentDate 15.06.2015
+Found length 2154 for currentDate 24.06.2015
+Found length 2895 for currentDate 25.06.2015
+Found length 2755 for currentDate 25.06.2015
+Found length 3524 for currentDate 03.07.2015
+Found length 3294 for currentDate 03.07.2015
+Found length 3294 for currentDate 03.07.2015
+Found length 3294 for currentDate 03.07.2015
+Found length 3294 for currentDate 03.07.2015
+Found length 3294 for currentDate 03.07.2015
+Found length 3294 for currentDate 03.07.2015
+Found length 3259 for currentDate 03.07.2015
+Found length 3263 for currentDate 16.07.2015
+Found length 3314 for currentDate 20.07.2015
+Found length 3697 for currentDate 11.08.2015
+Found length 3697 for currentDate 11.08.2015
+Found length 3697 for currentDate 11.08.2015
+Found length 3558 for currentDate 11.08.2015
+Found length 3518 for currentDate 11.08.2015
+Found length 3354 for currentDate 19.08.2015
+Found length 3319 for currentDate 24.08.2015
+Found length 3319 for currentDate 24.08.2015
+Found length 3319 for currentDate 24.08.2015
+Found length 3154 for currentDate 24.08.2015
+Found length 2319 for currentDate 24.08.2015
+Found length 3414 for currentDate 07.09.2015
+Found length 3277 for currentDate 07.09.2015
+Found length 1819 for currentDate 07.09.2015
+Found length 3275 for currentDate 23.09.2015
+Found length 3309 for currentDate 06.10.2015
+Found length 1807 for currentDate 07.10.2015
+Found length 1803 for currentDate 07.10.2015
+Found length 1994 for currentDate 19.11.2015
+Found length 3894 for currentDate 23.11.2015
+Found length 3894 for currentDate 23.11.2015
+Found length 1994 for currentDate 24.11.2015
+Found length 1994 for currentDate 24.11.2015
+Found length 3294 for currentDate 30.11.2015
+Found length 3294 for currentDate 30.11.2015
+Found length 3443 for currentDate 16.12.2015
+Found length 3443 for currentDate 16.12.2015
+Found 68 bars
+Processing [[3494], 05.01.2015]
+Stock is empty
+Cutting the bar from new supplier bar
+The cut [3506, 05.01.2015] was added to the stock
+
+Processing [[1936], 06.01.2015]
+Stock is not empty
+For [1936, 06.01.2015] candidate [3506, 05.01.2015] was found
+For [1936, 06.01.2015] the best fit is [3506, 05.01.2015]
+Bar [3506, 05.01.2015] was removed from the stock
+The cut [1570, 06.01.2015] was added to the stock
+
+Processing [[3399, 3234], 13.01.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3601, 13.01.2015] was added to the stock
+For [3399, 13.01.2015] no bar was found in stock
+Stock is not empty
+For [3234, 13.01.2015] candidate [3601, 13.01.2015] was found
+For [3234, 13.01.2015] the best fit is [3601, 13.01.2015]
+Bar [3601, 13.01.2015] was removed from the stock
+The cut [367, 13.01.2015] was thrashed
+
+Processing [[4714], 16.01.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [2286, 16.01.2015] was added to the stock
+For [4714, 16.01.2015] no bar was found in stock
+
+Processing [[3519], 26.01.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3481, 26.01.2015] was added to the stock
+For [3519, 26.01.2015] no bar was found in stock
+
+Processing [[3754, 3754], 18.03.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3246, 18.03.2015] was added to the stock
+For [3754, 18.03.2015] no bar was found in stock
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3246, 18.03.2015] was added to the stock
+For [3754, 18.03.2015] no bar was found in stock
+
+Processing [[1350], 23.03.2015]
+Stock is not empty
+For [1350, 23.03.2015] candidate [1570, 06.01.2015] was found
+For [1350, 23.03.2015] the best fit is [1570, 06.01.2015]
+Bar [1570, 06.01.2015] was removed from the stock
+The cut [220, 23.03.2015] was thrashed
+
+Processing [[2794], 24.03.2015]
+Stock is not empty
+For [2794, 24.03.2015] candidate [3481, 26.01.2015] was found
+For [2794, 24.03.2015] candidate [3246, 18.03.2015] was found
+For [2794, 24.03.2015] the best fit is [3246, 18.03.2015]
+Bar [3246, 18.03.2015] was removed from the stock
+The cut [452, 24.03.2015] was thrashed
+
+Processing [[3519, 2119, 2119, 2119], 01.04.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3481, 01.04.2015] was added to the stock
+For [3519, 01.04.2015] no bar was found in stock
+Stock is not empty
+For [2119, 01.04.2015] candidate [2286, 16.01.2015] was found
+For [2119, 01.04.2015] the best fit is [2286, 16.01.2015]
+Bar [2286, 16.01.2015] was removed from the stock
+The cut [167, 01.04.2015] was thrashed
+Stock is not empty
+For [2119, 01.04.2015] candidate [3481, 26.01.2015] was found
+For [2119, 01.04.2015] candidate [3246, 18.03.2015] was found
+For [2119, 01.04.2015] the best fit is [3246, 18.03.2015]
+Bar [3246, 18.03.2015] was removed from the stock
+The cut [1127, 01.04.2015] was added to the stock
+Stock is not empty
+For [2119, 01.04.2015] candidate [3481, 26.01.2015] was found
+For [2119, 01.04.2015] the best fit is [3481, 26.01.2015]
+Bar [3481, 26.01.2015] was removed from the stock
+The cut [1362, 01.04.2015] was added to the stock
+
+Processing [[3354], 13.04.2015]
+Stock is not empty
+For [3354, 13.04.2015] candidate [3481, 01.04.2015] was found
+For [3354, 13.04.2015] the best fit is [3481, 01.04.2015]
+Bar [3481, 01.04.2015] was removed from the stock
+The cut [127, 13.04.2015] was thrashed
+
+Processing [[3354], 16.04.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3646, 16.04.2015] was added to the stock
+For [3354, 16.04.2015] no bar was found in stock
+
+Processing [[3319], 28.04.2015]
+Stock is not empty
+For [3319, 28.04.2015] candidate [3646, 16.04.2015] was found
+For [3319, 28.04.2015] the best fit is [3646, 16.04.2015]
+Bar [3646, 16.04.2015] was removed from the stock
+The cut [327, 28.04.2015] was thrashed
+
+Processing [[3364, 3206], 11.05.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3636, 11.05.2015] was added to the stock
+For [3364, 11.05.2015] no bar was found in stock
+Stock is not empty
+For [3206, 11.05.2015] candidate [3636, 11.05.2015] was found
+For [3206, 11.05.2015] the best fit is [3636, 11.05.2015]
+Bar [3636, 11.05.2015] was removed from the stock
+The cut [430, 11.05.2015] was thrashed
+
+Processing [[3494, 3494, 3494, 3474, 3440, 3026], 12.05.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3506, 12.05.2015] was added to the stock
+For [3494, 12.05.2015] no bar was found in stock
+Stock is not empty
+For [3494, 12.05.2015] candidate [3506, 12.05.2015] was found
+For [3494, 12.05.2015] the best fit is [3506, 12.05.2015]
+Bar [3506, 12.05.2015] was removed from the stock
+The cut [12, 12.05.2015] was thrashed
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3506, 12.05.2015] was added to the stock
+For [3494, 12.05.2015] no bar was found in stock
+Stock is not empty
+For [3474, 12.05.2015] candidate [3506, 12.05.2015] was found
+For [3474, 12.05.2015] the best fit is [3506, 12.05.2015]
+Bar [3506, 12.05.2015] was removed from the stock
+The cut [32, 12.05.2015] was thrashed
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3560, 12.05.2015] was added to the stock
+For [3440, 12.05.2015] no bar was found in stock
+Stock is not empty
+For [3026, 12.05.2015] candidate [3560, 12.05.2015] was found
+For [3026, 12.05.2015] the best fit is [3560, 12.05.2015]
+Bar [3560, 12.05.2015] was removed from the stock
+The cut [534, 12.05.2015] was thrashed
+
+Processing [[2779, 2754, 2754], 15.06.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [4221, 15.06.2015] was added to the stock
+For [2779, 15.06.2015] no bar was found in stock
+Stock is not empty
+For [2754, 15.06.2015] candidate [4221, 15.06.2015] was found
+For [2754, 15.06.2015] the best fit is [4221, 15.06.2015]
+Bar [4221, 15.06.2015] was removed from the stock
+The cut [1467, 15.06.2015] was added to the stock
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [4246, 15.06.2015] was added to the stock
+For [2754, 15.06.2015] no bar was found in stock
+
+Processing [[2154], 24.06.2015]
+Stock is not empty
+For [2154, 24.06.2015] candidate [4246, 15.06.2015] was found
+For [2154, 24.06.2015] the best fit is [4246, 15.06.2015]
+Bar [4246, 15.06.2015] was removed from the stock
+The cut [2092, 24.06.2015] was added to the stock
+
+Processing [[2895, 2755], 25.06.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [4105, 25.06.2015] was added to the stock
+For [2895, 25.06.2015] no bar was found in stock
+Stock is not empty
+For [2755, 25.06.2015] candidate [4105, 25.06.2015] was found
+For [2755, 25.06.2015] the best fit is [4105, 25.06.2015]
+Bar [4105, 25.06.2015] was removed from the stock
+The cut [1350, 25.06.2015] was added to the stock
+
+Processing [[3524, 3294, 3294, 3294, 3294, 3294, 3294, 3259], 03.07.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3476, 03.07.2015] was added to the stock
+For [3524, 03.07.2015] no bar was found in stock
+Stock is not empty
+For [3294, 03.07.2015] candidate [3476, 03.07.2015] was found
+For [3294, 03.07.2015] the best fit is [3476, 03.07.2015]
+Bar [3476, 03.07.2015] was removed from the stock
+The cut [182, 03.07.2015] was thrashed
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3706, 03.07.2015] was added to the stock
+For [3294, 03.07.2015] no bar was found in stock
+Stock is not empty
+For [3294, 03.07.2015] candidate [3706, 03.07.2015] was found
+For [3294, 03.07.2015] the best fit is [3706, 03.07.2015]
+Bar [3706, 03.07.2015] was removed from the stock
+The cut [412, 03.07.2015] was thrashed
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3706, 03.07.2015] was added to the stock
+For [3294, 03.07.2015] no bar was found in stock
+Stock is not empty
+For [3294, 03.07.2015] candidate [3706, 03.07.2015] was found
+For [3294, 03.07.2015] the best fit is [3706, 03.07.2015]
+Bar [3706, 03.07.2015] was removed from the stock
+The cut [412, 03.07.2015] was thrashed
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3706, 03.07.2015] was added to the stock
+For [3294, 03.07.2015] no bar was found in stock
+Stock is not empty
+For [3259, 03.07.2015] candidate [3706, 03.07.2015] was found
+For [3259, 03.07.2015] the best fit is [3706, 03.07.2015]
+Bar [3706, 03.07.2015] was removed from the stock
+The cut [447, 03.07.2015] was thrashed
+
+Processing [[3263], 16.07.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3737, 16.07.2015] was added to the stock
+For [3263, 16.07.2015] no bar was found in stock
+
+Processing [[3314], 20.07.2015]
+Stock is not empty
+For [3314, 20.07.2015] candidate [3737, 16.07.2015] was found
+For [3314, 20.07.2015] the best fit is [3737, 16.07.2015]
+Bar [3737, 16.07.2015] was removed from the stock
+The cut [423, 20.07.2015] was thrashed
+
+Processing [[3697, 3697, 3697, 3558, 3518], 11.08.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3303, 11.08.2015] was added to the stock
+For [3697, 11.08.2015] no bar was found in stock
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3303, 11.08.2015] was added to the stock
+For [3697, 11.08.2015] no bar was found in stock
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3303, 11.08.2015] was added to the stock
+For [3697, 11.08.2015] no bar was found in stock
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3442, 11.08.2015] was added to the stock
+For [3558, 11.08.2015] no bar was found in stock
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3482, 11.08.2015] was added to the stock
+For [3518, 11.08.2015] no bar was found in stock
+
+Processing [[3354], 19.08.2015]
+Stock is not empty
+For [3354, 19.08.2015] candidate [3442, 11.08.2015] was found
+For [3354, 19.08.2015] the best fit is [3442, 11.08.2015]
+Bar [3442, 11.08.2015] was removed from the stock
+The cut [88, 19.08.2015] was thrashed
+
+Processing [[3319, 3319, 3319, 3154, 2319], 24.08.2015]
+Stock is not empty
+For [3319, 24.08.2015] candidate [3482, 11.08.2015] was found
+For [3319, 24.08.2015] the best fit is [3482, 11.08.2015]
+Bar [3482, 11.08.2015] was removed from the stock
+The cut [163, 24.08.2015] was thrashed
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3681, 24.08.2015] was added to the stock
+For [3319, 24.08.2015] no bar was found in stock
+Stock is not empty
+For [3319, 24.08.2015] candidate [3681, 24.08.2015] was found
+For [3319, 24.08.2015] the best fit is [3681, 24.08.2015]
+Bar [3681, 24.08.2015] was removed from the stock
+The cut [362, 24.08.2015] was thrashed
+Stock is not empty
+For [3154, 24.08.2015] candidate [3303, 11.08.2015] was found
+For [3154, 24.08.2015] the best fit is [3303, 11.08.2015]
+Bar [3303, 11.08.2015] was removed from the stock
+The cut [149, 24.08.2015] was thrashed
+Stock is not empty
+For [2319, 24.08.2015] candidate [3303, 11.08.2015] was found
+For [2319, 24.08.2015] the best fit is [3303, 11.08.2015]
+Bar [3303, 11.08.2015] was removed from the stock
+The cut [984, 24.08.2015] was thrashed
+
+Processing [[3414, 3277, 1819], 07.09.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3586, 07.09.2015] was added to the stock
+For [3414, 07.09.2015] no bar was found in stock
+Stock is not empty
+For [3277, 07.09.2015] candidate [3303, 11.08.2015] was found
+For [3277, 07.09.2015] the best fit is [3303, 11.08.2015]
+Bar [3303, 11.08.2015] was removed from the stock
+The cut [26, 07.09.2015] was thrashed
+Stock is not empty
+For [1819, 07.09.2015] candidate [2092, 24.06.2015] was found
+For [1819, 07.09.2015] the best fit is [2092, 24.06.2015]
+Bar [2092, 24.06.2015] was removed from the stock
+The cut [273, 07.09.2015] was thrashed
+
+Processing [[3275], 23.09.2015]
+Stock is not empty
+For [3275, 23.09.2015] candidate [3586, 07.09.2015] was found
+For [3275, 23.09.2015] the best fit is [3586, 07.09.2015]
+Bar [3586, 07.09.2015] was removed from the stock
+The cut [311, 23.09.2015] was thrashed
+
+Processing [[3309], 06.10.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3691, 06.10.2015] was added to the stock
+For [3309, 06.10.2015] no bar was found in stock
+
+Processing [[1807, 1803], 07.10.2015]
+Stock is not empty
+For [1807, 07.10.2015] candidate [3691, 06.10.2015] was found
+For [1807, 07.10.2015] the best fit is [3691, 06.10.2015]
+Bar [3691, 06.10.2015] was removed from the stock
+The cut [1884, 07.10.2015] was added to the stock
+Stock is not empty
+For [1803, 07.10.2015] candidate [1884, 07.10.2015] was found
+For [1803, 07.10.2015] the best fit is [1884, 07.10.2015]
+Bar [1884, 07.10.2015] was removed from the stock
+The cut [81, 07.10.2015] was thrashed
+
+Processing [[1994], 19.11.2015]
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [5006, 19.11.2015] was added to the stock
+For [1994, 19.11.2015] no bar was found in stock
+
+Processing [[3894, 3894], 23.11.2015]
+Stock is not empty
+For [3894, 23.11.2015] candidate [5006, 19.11.2015] was found
+For [3894, 23.11.2015] the best fit is [5006, 19.11.2015]
+Bar [5006, 19.11.2015] was removed from the stock
+The cut [1112, 23.11.2015] was added to the stock
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3106, 23.11.2015] was added to the stock
+For [3894, 23.11.2015] no bar was found in stock
+
+Processing [[1994, 1994], 24.11.2015]
+Stock is not empty
+For [1994, 24.11.2015] candidate [3106, 23.11.2015] was found
+For [1994, 24.11.2015] the best fit is [3106, 23.11.2015]
+Bar [3106, 23.11.2015] was removed from the stock
+The cut [1112, 24.11.2015] was added to the stock
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [5006, 24.11.2015] was added to the stock
+For [1994, 24.11.2015] no bar was found in stock
+
+Processing [[3294, 3294], 30.11.2015]
+Stock is not empty
+For [3294, 30.11.2015] candidate [5006, 24.11.2015] was found
+For [3294, 30.11.2015] the best fit is [5006, 24.11.2015]
+Bar [5006, 24.11.2015] was removed from the stock
+The cut [1712, 30.11.2015] was added to the stock
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3706, 30.11.2015] was added to the stock
+For [3294, 30.11.2015] no bar was found in stock
+
+Processing [[3443, 3443], 16.12.2015]
+Stock is not empty
+For [3443, 16.12.2015] candidate [3706, 30.11.2015] was found
+For [3443, 16.12.2015] the best fit is [3706, 30.11.2015]
+Bar [3706, 30.11.2015] was removed from the stock
+The cut [263, 16.12.2015] was thrashed
+Stock is not empty
+Cutting the bar from new supplier bar
+The cut [3557, 16.12.2015] was added to the stock
+For [3443, 16.12.2015] no bar was found in stock
+
+---------------------
+--- FINAL RESULTS ---
+---------------------
+231000 total supplier length (33 bars bought)
+7244 total cut length (24 cuts trashed)
+The stock is:
+    [1127, 01.04.2015]
+    [1362, 01.04.2015]
+    [1467, 15.06.2015]
+    [1350, 25.06.2015]
+    [1112, 23.11.2015]
+    [1112, 24.11.2015]
+    [1712, 30.11.2015]
+    [3557, 16.12.2015]
+10801 total stock length (7 cuts in stock) 
+Waste = 3.14%
