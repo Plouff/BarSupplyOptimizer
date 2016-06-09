@@ -9,4 +9,4 @@
 @brief The Bar Manager package
 """
 # List of modules
-__all__ = ['BarManager.py', 'CutStock.py']
+__all__ = ['BarManager.py', 'CutStock.py', 'CutTrash.py']

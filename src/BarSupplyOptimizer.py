@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
 	# Process input data
 	for currentDate in inputDic.keys():
-		logging.debug("Date {}: {}".format(currentDate, inputDic[currentDate]))
+		logging.debug("Day {}: {}".format(currentDate, inputDic[currentDate]))
 
 		# Loop over bars by date
 		for cutLength in inputDic[currentDate]:
