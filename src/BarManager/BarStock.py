@@ -1,5 +1,5 @@
 """
-@file CutStock.py
+@file BarStock.py
 @brief Cut Stock module
 
 @author Nassim Zga
@@ -10,7 +10,7 @@ import logging
 
 from BarManager.Bar import Bar
 
-class CutStock():
+class BarStock():
 	'''
 	The stock of bars
 	'''
@@ -22,7 +22,7 @@ class CutStock():
 		self.bars = []
 		self.manager = barManager
 
-	def GetCutsList(self):
+	def GetBarsList(self):
 		"""
 		Getter for bars
 		"""
@@ -36,12 +36,12 @@ class CutStock():
 			logging.debug("Stock is empty")
 			return True
 
-	def AddCutInStock(self, bar):
+	def AddCutInBarStock(self, bar):
 		self.bars.append(bar)
 		logging.debug("The cut [{}, {}] was added to the stock".format(bar.length,
 			 bar.dateIn))
 
-	def RemoveCutFromStock(self, barIndex):
+	def RemoveBarFromStock(self, barIndex):
 		bar = self.bars.pop(barIndex)
 		logging.debug("Bar [{}, {}] was removed from the stock".format(bar.length,
 			 bar.dateIn))
@@ -77,6 +77,6 @@ class CutStock():
 			logging.debug("For [{}, {}] the best fit is [{}, {}]".format(barLengthRequired,
 				currentDate, bestFitCut.length, bestFitCut.dateIn))
 			# Else remove the bar from the stock and create a new cut
-			self.RemoveCutFromStock(bestFitIndex)
+			self.RemoveBarFromStock(bestFitIndex)
 
 		return bestFitCut

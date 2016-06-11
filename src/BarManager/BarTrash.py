@@ -1,5 +1,5 @@
 """
-@file CutTrash.py
+@file BarTrash.py
 @brief The cut trash
 
 author: Nassim Zga
@@ -7,8 +7,6 @@ created: 09/06/16
 """
 
 import logging
-
-from BarManager.Bar import Bar
 
 class BarInTrash:
 	"""
@@ -18,7 +16,7 @@ class BarInTrash:
 		self.length = length
 		self.toTrashDate = toTrashDate
 
-class CutTrash():
+class BarTrash():
 		'''
 		The cut trash
 		'''
@@ -31,7 +29,7 @@ class CutTrash():
 			self.bars = []
 			self.toThrashLimit = toThrashLimit
 
-		def GetCutsList(self):
+		def GetBarsList(self):
 			return self.bars
 
 		def CheckIfGoToTrash(self, bar):
@@ -44,7 +42,7 @@ class CutTrash():
 			else:
 				return False
 
-		def SendCutToTrash(self, bar, currentDate):
+		def SendBarToTrash(self, bar, currentDate):
 			"""
 			Send the bar to the trash
 
