@@ -8,54 +8,47 @@ created 04/06/16
 
 import logging
 
-class Cut:
-	"""
-	Helper class for bars in stock
-	"""
-	def __init__(self, length, dateIn):
-		self.length = length
-		self.dateIn = dateIn
-		self.dateOut = 0
+from BarManager.Bar import Bar
 
 class CutStock():
 	'''
-	The stock of cuts
+	The stock of bars
 	'''
 
 	def __init__(self, barManager):
 		'''
 		Constructor
 		'''
-		self.cuts = []
+		self.bars = []
 		self.manager = barManager
 
 	def GetCutsList(self):
 		"""
-		Getter for cuts
+		Getter for bars
 		"""
-		return self.cuts
+		return self.bars
 
 	def StockIsEmpty(self):
-		if len(self.cuts):
+		if len(self.bars):
 			logging.debug("Stock is not empty")
 			return False
 		else:
 			logging.debug("Stock is empty")
 			return True
 
-	def AddCutInStock(self, cutLength, cutDate):
-		self.cuts.append(Cut(cutLength, cutDate))
-		logging.debug("The cut [{}, {}] was added to the stock".format(cutLength,
-			 cutDate))
+	def AddCutInStock(self, bar):
+		self.bars.append(bar)
+		logging.debug("The cut [{}, {}] was added to the stock".format(bar.length,
+			 bar.dateIn))
 
 	def RemoveCutFromStock(self, barIndex):
-		bar = self.cuts.pop(barIndex)
+		bar = self.bars.pop(barIndex)
 		logging.debug("Bar [{}, {}] was removed from the stock".format(bar.length,
 			 bar.dateIn))
 
 	def FindBestCutFitOrGetNewBar(self, barLengthRequired, currentDate):
 		"""
-		Find best cut fit or get new bar
+		Find best bar cut that fits or a get new bar
 
 		If a best fit is found the bar is removed from the stock
 
@@ -64,10 +57,11 @@ class CutStock():
 
 		@return A bar from the stock or a supplier bar (check the length)
 		"""
-		bestFitCut = Cut(self.manager.GetSupplierLength(), currentDate)
+		bestFitCut = Bar(self.manager.GetSupplierBarIndex(), currentDate,
+			self.manager.GetSupplierLength())
 		bestFitIndex = -1
 
-		for barIndex, stockBar in enumerate(self.cuts):
+		for barIndex, stockBar in enumerate(self.bars):
 			if stockBar.length > barLengthRequired and stockBar.length < bestFitCut.length:
 				# The first bar added to the stock is used since the list is created day per day
 				bestFitCut = stockBar

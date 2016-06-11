@@ -1,0 +1,21 @@
+INFO: ---------------------
+INFO: --- FINAL RESULTS ---
+INFO: ---------------------
+INFO: 378000 total supplier length (54 bars bought)
+INFO: 13189 total cut length (40 cuts trashed)
+INFO: The stock is:
+INFO:     [1127, 01.04.2015]
+INFO:     [1362, 01.04.2015]
+INFO:     [1362, 01.04.2015]
+INFO:     [1362, 01.04.2015]
+INFO:     [1467, 15.06.2015]
+INFO:     [1492, 15.06.2015]
+INFO:     [1492, 15.06.2015]
+INFO:     [1492, 15.06.2015]
+INFO:     [1492, 15.06.2015]
+INFO:     [1492, 15.06.2015]
+INFO:     [3203, 19.11.2015]
+INFO:     [1112, 24.11.2015]
+INFO:     [1112, 24.11.2015]
+INFO: 14301 total stock length (12 cuts in stock) 
+INFO: Waste = 13189 / 378000 = 3.49%
