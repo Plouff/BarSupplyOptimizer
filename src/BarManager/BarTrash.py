@@ -42,13 +42,12 @@ class BarTrash():
 			else:
 				return False
 
-		def SendBarToTrash(self, bar, currentDate):
+		def SendBarToTrash(self, bar):
 			"""
 			Send the bar to the trash
 
 			Ie. add the bar to the list of trashed bars
 			"""
-			bar.SetDateOut(currentDate)
 			self.bars.append(bar)
 			logging.debug("The cut [{}, {}] was thrashed".format(bar.length, 
 				bar.dateIn))

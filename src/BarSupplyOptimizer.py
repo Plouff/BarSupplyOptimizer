@@ -13,6 +13,7 @@ TAILLE_DES_BARRES_FOURNISSEUR = 7000
 TAILLE_ENVOI_POUBELLE = 1000
 # User input (in config.ini later)
 csvFilePath = "../Longueurs caissons PE.csv"
+outCsvPath = "../out.csv"
 dateCol = "jour de fab"
 lengthCol = "Longueur profils en mm"
 barCountCol = "Qté Produite"
@@ -41,7 +42,8 @@ rootLogger.addHandler(fileHandler)
 
 # Custom modules
 from BarManager.BarManager import BarManager
-from BarCsvReader.BarCsvReader import BarCsvReader
+from CsvManager.BarCsvReader import BarCsvReader
+from CsvManager.CsvWriter import CsvWriter
 
 
 """
@@ -64,17 +66,17 @@ if __name__ == '__main__':
 		# Loop over bars by date
 		for cutLength in inputDic[currentDate]:
 			logging.debug("Processing [{}, {}]".format(cutLength, currentDate,))
-			if barManager.StockIsEmpty():
-				# If stock is empty use supplier new bar
-				barManager.CutBarFromNewBar(currentDate, cutLength)
-			else:
-				# If the stock is not empty try to find the best fit bar in the stock
-				barManager.FindBestFitInStockOrUseNewBar(currentDate, cutLength)
+			barManager.ProcessBar(currentDate, cutLength)
 
 		logging.debug("")
 
 	# Print final results
 	barManager.PrintFinalResults()
+
+	# Bar CSV writer
+	csvWriter = CsvWriter(outCsvPath, barManager.GetLoggerList())
+	
+	csvWriter.writeOutputLogCsv()
 
 
 	sys.exit(0)

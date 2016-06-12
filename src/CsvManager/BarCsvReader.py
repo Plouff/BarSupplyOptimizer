@@ -1,5 +1,5 @@
 """
-@file BarCsvReader.py
+@file CsvManager.py
 @brief The bar CSV file reader module
 
 @author Nassim Zga

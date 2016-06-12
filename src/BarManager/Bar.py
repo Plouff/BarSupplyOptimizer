@@ -7,22 +7,30 @@ created: 09/06/16
 """
 
 class Bar():
+	'''
+	The bar class
+	'''
+	staticBarIndex = 0
+
+	def __init__(self, supplierBarIndex, length, dateIn, isVirtual=False):
 		'''
-		The bar class
+		Constructor
 		'''
+		self.dateIn = dateIn
+		self.length = length
+		self.supplierBarIndex = supplierBarIndex
+		self.index = Bar.staticBarIndex
+		# Increment static bar index only if the bar is not "virtual"
+		if not isVirtual:
+			Bar.staticBarIndex = Bar.staticBarIndex + 1
+		self.dateOut = None
+		self.InStockOrInTrash = None
 
-		def __init__(self, supplierBarIndex, dateIn, length):
-			'''
-			Constructor
-			'''
-			self.supplierBarIndex = supplierBarIndex
-			self.dateIn = dateIn
-			self.length = length
+	@classmethod
+	def usingExitingBar(cls, bar, lengthRequired, currentDate):
+		remainingLength = bar.length - lengthRequired
+		return cls(bar.supplierBarIndex, remainingLength, currentDate)
 
-		@classmethod
-		def usingExitingBar(cls, bar, lengthRequired, currentDate):
-			remainingLength = bar.length - lengthRequired
-			return cls(bar.supplierBarIndex, currentDate, remainingLength)
-
-		def SetDateOut(self, dateOut):
-			self.dateOut = dateOut
+	@classmethod
+	def virtualBar(cls, supplierBarIndex, lengthRequired, currentDate):
+		return cls(supplierBarIndex, lengthRequired, currentDate, isVirtual=True)

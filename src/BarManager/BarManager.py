@@ -11,6 +11,7 @@ import logging
 from BarManager.Bar import Bar
 from BarManager.BarStock import BarStock
 from BarManager.BarTrash import BarTrash
+from BarManager.BarLogger import BarLogger
 
 class BarManager:
 	"""
@@ -26,6 +27,8 @@ class BarManager:
 		self.barStock = BarStock(self)
 		# The trash of bar cuts
 		self.barTrash = BarTrash(self, toThrashLimit)
+		# The bar logger
+		self.barLogger = BarLogger(self)
 
 	def GetSupplierLength(self):
 		return self.supplierBarLength
@@ -33,6 +36,9 @@ class BarManager:
 	def GetSupplierBarIndex(self):
 		return self.supplierBarIndex
 
+	def GetLoggerList(self):
+		return self.barLogger.GetBars()
+	
 	def IncrementSupplierBarIndex(self):
 		self.supplierBarIndex = self.supplierBarIndex + 1
 
@@ -40,12 +46,21 @@ class BarManager:
 		return self.barStock.StockIsEmpty()
 
 	def StoreOrTrashCut(self, bar, currentDate):
+		"""
+		Store or trash a cut
+
+		return a Bar object
+		"""
+		bar.dateIn = currentDate
+
 		# If the cut is too small => to thrash
 		if self.barTrash.CheckIfGoToTrash(bar):
-			self.barTrash.SendBarToTrash(bar, currentDate)
+			bar.InStockOrInTrash = "Trash"
+			bar.dateOut = currentDate
+			self.barTrash.SendBarToTrash(bar)
 		else:
 			# Else the bar goes in stock
-			bar.dateIn = currentDate
+			bar.InStockOrInTrash = "Stock"
 			self.barStock.AddCutInBarStock(bar)
 
 	def CutBarFromNewBar(self, currentDate, cutLength):
@@ -53,22 +68,38 @@ class BarManager:
 
 		self.IncrementSupplierBarIndex()
 		newCutLength = self.supplierBarLength - cutLength
-		cut = Bar(self.supplierBarIndex, currentDate, newCutLength)
+		cut = Bar(self.supplierBarIndex, newCutLength, currentDate)
 
 		self.StoreOrTrashCut(cut, currentDate)
 
-	def FindBestFitInStockOrUseNewBar(self, currentDate, cutLength):
+		return cut
+
+	def CutWithBestFitInStockOrNewBar(self, currentDate, cutLength):
 		# Find the smallest bar in stock that can be used
 		bestFitCut = self.barStock.FindBestCutFitOrGetNewBar(cutLength, currentDate)
 
 		if bestFitCut.length == self.supplierBarLength:
 			# If the best fit bar has the length of a supplier bar => use new bar
-			self.CutBarFromNewBar(currentDate, cutLength)
+			cut = self.CutBarFromNewBar(currentDate, cutLength)
+			return [cut]
 		else:
 			# Else use bar from stock
-			bestFitCut.SetDateOut(currentDate)
+			bestFitCut.dateOut = currentDate
 			cut = Bar.usingExitingBar(bestFitCut, cutLength, currentDate)
 			self.StoreOrTrashCut(cut, currentDate)
+			return [bestFitCut, cut]
+
+	def ProcessBar(self, currentDate, cutLength):
+		bar = None
+		if self.StockIsEmpty():
+			# If stock is empty use supplier new bar
+			bar = self.CutBarFromNewBar(currentDate, cutLength)
+			self.barLogger.UpdateWithBar(bar)
+		else:
+			# If the stock is not empty try to find the best fit bar in the stock
+			bars = self.CutWithBestFitInStockOrNewBar(currentDate, cutLength)
+			self.barLogger.UpdateWithListOfBars(bars)
+
 
 	def PrintFinalResults(self):
 		trashLength = 0

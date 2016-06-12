@@ -57,8 +57,8 @@ class BarStock():
 
 		@return A bar from the stock or a supplier bar (check the length)
 		"""
-		bestFitCut = Bar(self.manager.GetSupplierBarIndex(), currentDate,
-			self.manager.GetSupplierLength())
+		bestFitCut = Bar.virtualBar(self.manager.GetSupplierBarIndex(),
+			self.manager.GetSupplierLength(), currentDate)
 		bestFitIndex = -1
 
 		for barIndex, stockBar in enumerate(self.bars):
