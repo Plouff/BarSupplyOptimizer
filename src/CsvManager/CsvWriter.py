@@ -1,3 +1,4 @@
+# -*-coding: utf-8 -*-
 """
 @file CsvWriter.py
 @brief The output CSV writter
@@ -24,20 +25,26 @@ class CsvWriter():
 		self.outCsvPath = outCsvPath
 
 	def writeOutputLogCsv(self):
-		with open(self.outCsvPath, 'wt') as csvfile:
-			writer = csv.writer(csvfile, delimiter=';',
-				 quoting=csv.QUOTE_ALL, lineterminator=os.linesep)
+		with open(self.outCsvPath, 'w', newline='') as csvfile:
+			writer = csv.writer(csvfile, delimiter=';', quoting=csv.QUOTE_ALL)
 
 			# Write header row
-			writer.writerow(["Barre n°", "Barre neuve n°", "Longueur resultante", "Date entree stock", "Date sortie stock", "Stock/Poubelle"])
+			writer.writerow(["Barre n°", "Barre neuve n°", "Longueur resultante",
+				"Date entree stock", "Date sortie stock", "Stock/Poubelle"])
 
 			# Write data rows
 			for bar in self.barsLogList:
 				stockPoubelle = None
 				if bar.InStockOrInTrash is "Trash":
-					stockPoubelle = "Poubelle".strip()
+					stockPoubelle = u"Poubelle"
 				else:
-					stockPoubelle = "Stock".strip()
+					stockPoubelle = u"Stock"
+
+				if bar.dateIn:
+					bar.dateIn = bar.dateIn.replace(".", "/")
+
+				if bar.dateOut:
+					bar.dateOut = bar.dateOut.replace(".", "/")
 
 				writer.writerow([
 					bar.index + 1,
