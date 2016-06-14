@@ -22,6 +22,7 @@ class BarSupplyOptimizerConfig():
 		lengthCol,
 		barCountCol,
 		outputCsv,
+		optimizerConfig,
 		loggingLevel):
 		'''
 		Constructor
@@ -33,6 +34,7 @@ class BarSupplyOptimizerConfig():
 		self.lengthCol = lengthCol
 		self.barCountCol = barCountCol
 		self.outputCsv = outputCsv
+		self.optimizerConfig = optimizerConfig
 		self.loggingLevel = loggingLevel
 
 
@@ -64,15 +66,42 @@ class ConfigManager():
 		lengthCol = config['CsvDentrée']['NomColonneLongueur']
 		barCountCol = config['CsvDentrée']['NomColonneQuantité']
 
-		# CsvDetailléDeSortie
-		relativeOutputDir = config['CsvDetailléDeSortie']['RépertoireCsvResultatsDetaillé']
-		configDir = os.path.dirname(self.configPath)
-		outputDir = "{}/{}".format(configDir, relativeOutputDir)
-		outputCsvName = "{}_{}_{}.csv".format(
-			os.path.splitext(os.path.basename(inputCsvFile))[0],
-			supplierBarLength,
-			toTrashLimit)
-		outputCsv = "{}/{}".format(outputDir, outputCsvName)
+		# Optimum finder mode
+		optimizerConfig = {}
+		enableOptimizerMode = config['ModeRechercheOptimum']['ActiverModeOptimisation']
+		if enableOptimizerMode.lower() == 'vrai':
+			# ModeRechercheOptimum
+			optimizerConfig['optimizerEnabled'] = True
+			optimizerConfig['supplierLengthMin'] = int(config['ModeRechercheOptimum']['TailleDesBarresFournisseurMin'])
+			optimizerConfig['supplierLengthMax'] = int(config['ModeRechercheOptimum']['TailleDesBarresFournisseurMax']) + 1
+			optimizerConfig['supplierLengthStep'] = int(config['ModeRechercheOptimum']['TailleDesBarresFournisseurPas'])
+			optimizerConfig['toTrashLengthMin'] = int(config['ModeRechercheOptimum']['TailleMiniPoubelleMin'])
+			optimizerConfig['toTrashLengthMax'] = int(config['ModeRechercheOptimum']['TailleMiniPoubelleMax']) + 1
+			optimizerConfig['toTrashLengthStep'] = int(config['ModeRechercheOptimum']['TailleMiniPoubellePas'])
+
+			relativeOutputDir = config['ModeRechercheOptimum']['RépertoireCsvResultatsOptimisation']
+			configDir = os.path.dirname(self.configPath)
+			outputDir = "{}/{}".format(configDir, relativeOutputDir)
+			outputCsvName = "{}_fournisseur_{}_{}_{}__poubelle_{}_{}_{}.csv".format(
+				os.path.splitext(os.path.basename(inputCsvFile))[0],
+				optimizerConfig['supplierLengthMin'],
+				optimizerConfig['supplierLengthMax'] - 1,
+				optimizerConfig['supplierLengthStep'],
+				optimizerConfig['toTrashLengthMin'],
+				optimizerConfig['toTrashLengthMax'] - 1,
+				optimizerConfig['toTrashLengthStep'])
+			outputCsv = "{}/{}".format(outputDir, outputCsvName)
+		else:
+			optimizerConfig['optimizerEnabled'] = False
+			# CsvDetailléDeSortie
+			relativeOutputDir = config['CsvDetailléDeSortie']['RépertoireCsvResultatsDetaillé']
+			configDir = os.path.dirname(self.configPath)
+			outputDir = "{}/{}".format(configDir, relativeOutputDir)
+			outputCsvName = "{}_{}_{}.csv".format(
+				os.path.splitext(os.path.basename(inputCsvFile))[0],
+				supplierBarLength,
+				toTrashLimit)
+			outputCsv = "{}/{}".format(outputDir, outputCsvName)
 
 		# Debug
 		loggingLevel = config['Debug']['LoggingLevel']
@@ -85,6 +114,7 @@ class ConfigManager():
 			lengthCol,
 			barCountCol,
 			outputCsv,
+			optimizerConfig,
 			loggingLevel)
 
 		return barConfig

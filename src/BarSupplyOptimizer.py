@@ -34,6 +34,28 @@ from CsvManager.BarCsvReader import BarCsvReader
 from CsvManager.CsvWriter import CsvWriter
 from ConfigManager.ConfigManager import ConfigManager
 
+
+def LaunchSimulation(inputDic, toTrashLimit, supplierBarLength):
+	# Create a bar manager
+	barManager = BarManager(toTrashLimit, supplierBarLength)
+
+	# Process input data
+	for currentDate in inputDic.keys():
+		logging.debug("Day {}: {}".format(currentDate, inputDic[currentDate]))
+
+		# Loop over bars by date
+		for cutLength in inputDic[currentDate]:
+			logging.debug("Processing [{}, {}]".format(cutLength, currentDate,))
+			barManager.ProcessBar(currentDate, cutLength)
+
+		logging.debug("")
+
+	# Compute final results
+	barManager.ComputeFinalResults()
+
+	# Print final results
+	return barManager
+
 """
 Script wrapper
 """
@@ -51,6 +73,7 @@ if __name__ == '__main__':
 	dateCol = barConfig.dateCol
 	lengthCol = barConfig.lengthCol
 	barCountCol = barConfig.barCountCol
+	optimizerConfig = barConfig.optimizerConfig
 
 	if barConfig.loggingLevel.lower() == "debug":
 		rootLogger.setLevel(logging.DEBUG)
@@ -62,27 +85,32 @@ if __name__ == '__main__':
 	csvReader = BarCsvReader(inputCsvPath)
 	inputDic = csvReader.ParseCsv(dateCol, lengthCol, barCountCol)
 
-	# Create a bar manager
-	barManager = BarManager(toTrashLimit, supplierBarLength)
+	if not optimizerConfig['optimizerEnabled']:
+		#
+		# Launch one simulation
+		#
+		barManager = LaunchSimulation(inputDic, toTrashLimit, supplierBarLength)
+		# Bar CSV writer
+		csvWriter = CsvWriter(outputCsvPath)
+		csvWriter.writeDetailedLogCsv(barManager.GetLoggerList())
+	else:
+		#
+		# Launch optimizer mode
+		#
+		results = []
+		for supplierBarLength in range(
+				optimizerConfig['supplierLengthMin'],
+				optimizerConfig['supplierLengthMax'],
+				optimizerConfig['supplierLengthStep']):
+			for toTrashLimit in range(
+					optimizerConfig['toTrashLengthMin'],
+					optimizerConfig['toTrashLengthMax'],
+					optimizerConfig['toTrashLengthStep']):
+				barManager = LaunchSimulation(inputDic, toTrashLimit, supplierBarLength)
+				results.append(barManager.results)
 
-	# Process input data
-	for currentDate in inputDic.keys():
-		logging.debug("Day {}: {}".format(currentDate, inputDic[currentDate]))
-
-		# Loop over bars by date
-		for cutLength in inputDic[currentDate]:
-			logging.debug("Processing [{}, {}]".format(cutLength, currentDate,))
-			barManager.ProcessBar(currentDate, cutLength)
-
-		logging.debug("")
-
-	# Print final results
-	barManager.PrintFinalResults()
-
-	# Bar CSV writer
-	csvWriter = CsvWriter(outputCsvPath, barManager.GetLoggerList())
-
-	csvWriter.writeOutputLogCsv()
+		csvWriter = CsvWriter(outputCsvPath)
+		csvWriter.writeOptimizationCsv(results)
 
 
 	sys.exit(0)

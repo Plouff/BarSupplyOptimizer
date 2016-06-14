@@ -18,20 +18,22 @@ class CsvWriter():
 	'''
 
 
-	def __init__(self, outCsvPath, barsLogList):
+	def __init__(self, outCsvPath):
 		'''
 		Constructor
 		'''
-		self.barsLogList = barsLogList
 		self.outCsvPath = outCsvPath
 
-	def writeOutputLogCsv(self):
+	def createOutputDir(self):
 		if not os.path.exists(os.path.dirname(self.outCsvPath)):
 			try:
 				os.makedirs(os.path.dirname(self.outCsvPath))
 			except OSError as exc: # Guard against race condition
 				if exc.errno != errno.EEXIST:
 					raise
+
+	def writeDetailedLogCsv(self, barsLogList):
+		self.createOutputDir()
 
 		with open(self.outCsvPath, 'w', newline='') as csvfile:
 			writer = csv.writer(csvfile, delimiter=';', quoting=csv.QUOTE_ALL)
@@ -41,7 +43,7 @@ class CsvWriter():
 				"Date entree stock", "Date sortie stock", "Stock/Poubelle"])
 
 			# Write data rows
-			for bar in self.barsLogList:
+			for bar in barsLogList:
 				stockPoubelle = None
 				if bar.InStockOrInTrash is "Trash":
 					stockPoubelle = u"Poubelle"
@@ -65,4 +67,29 @@ class CsvWriter():
 
 		logging.info("Output CSV {} written".format(self.outCsvPath))
 
-		
+
+	def writeOptimizationCsv(self, results):
+		self.createOutputDir()
+
+		with open(self.outCsvPath, 'w', newline='') as csvfile:
+			writer = csv.writer(csvfile, delimiter=';', quoting=csv.QUOTE_ALL)
+
+			# Write header row
+			writer.writerow(["Longueur barre neuve", "Limite poubelle",
+				"Nb barres achetées", "Longueur de barres achetées",
+				"Nb barres jetées", "Longueur jetée", "% jeté",
+				"Nb barres en stock", "Longueur du stock"])
+			# Write data rows
+			for res in results:
+				writer.writerow([
+				res.supplierBarLength,
+				res.toTrashLimit,
+				res.supplierBarsBought,
+				res.supplierLengthBought,
+				res.trashCount,
+				res.trashLength,
+				res.wastePercentage,
+				res.stockCount,
+				res.stockLength
+				])
+		logging.info("Output CSV {} written".format(self.outCsvPath))

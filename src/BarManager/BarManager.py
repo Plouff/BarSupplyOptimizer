@@ -13,6 +13,33 @@ from BarManager.BarStock import BarStock
 from BarManager.BarTrash import BarTrash
 from BarManager.BarLogger import BarLogger
 
+class SimulationResult():
+	"""
+	Results of a simulation
+	"""
+
+	def __init__(self,
+		supplierBarLength,
+		toTrashLimit,
+		supplierBarsBought,
+		supplierLengthBought,
+		trashCount,
+		trashLength,
+		stockLength,
+		stockCount,
+		wastePercentage):
+
+		self.supplierBarLength = supplierBarLength
+		self.toTrashLimit = toTrashLimit
+		self.supplierBarsBought = supplierBarsBought
+		self.supplierLengthBought = supplierLengthBought
+		self.trashLength = trashLength
+		self.trashCount = trashCount
+		self.stockLength = stockLength
+		self.stockCount = stockCount
+		self.wastePercentage = round(wastePercentage, 2)
+
+
 class BarManager:
 	"""
 	The Bar Manager
@@ -101,7 +128,7 @@ class BarManager:
 			self.barLogger.UpdateWithListOfBars(bars)
 
 
-	def PrintFinalResults(self):
+	def ComputeFinalResults(self):
 		trashLength = 0
 		trashedBarCount = 0
 		stockedBarCount = 0
@@ -111,21 +138,35 @@ class BarManager:
 		logging.info("--- FINAL RESULTS ---")
 		logging.info("---------------------")
 		supplierLength = self.supplierBarIndex * self.supplierBarLength
-		logging.info("{} total supplier length ({} bars bought)".format(supplierLength,
-			self.supplierBarIndex))
+		logging.info("{} total supplier length ({} bars bought)".format(
+			supplierLength, self.supplierBarIndex))
 
 		for count, bar in enumerate(self.barTrash.GetBarsList()):
 			trashedBarCount = count
 			trashLength = trashLength + int(bar.length)
-		logging.info("{} total length trashed ({} cuts trashed)".format(trashLength, trashedBarCount))
+		logging.info("{} total length trashed ({} cuts trashed)".format(
+			trashLength, trashedBarCount))
 
 		logging.debug("The stock is:")
 		for count, bar in enumerate(self.barStock.GetBarsList()):
 			logging.debug("    [{}, {}]".format(bar.length, bar.dateIn))
 			stockedBarCount = count
 			stockLength = stockLength + int(bar.length)
-		logging.info("{} total stock length ({} bars in stock) ".format(stockLength, stockedBarCount))
+		logging.info("{} total stock length ({} bars in stock) ".format(
+			stockLength, stockedBarCount))
 
 		waste = 100 * trashLength / supplierLength
 		logging.info("Waste = {} / {} = {:.2f}%".format(trashLength, 
 			supplierLength, waste))
+
+		self.results = SimulationResult(
+			self.supplierBarLength,
+			self.toThrashLimit,
+			self.supplierBarIndex,
+			supplierLength,
+			trashedBarCount,
+			trashLength,
+			stockLength,
+			stockedBarCount,
+			waste)
+		
