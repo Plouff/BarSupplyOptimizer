@@ -10,6 +10,7 @@ created: 12 juin 2016
 import csv
 import logging
 import os
+import errno
 
 class CsvWriter():
 	'''
@@ -25,6 +26,13 @@ class CsvWriter():
 		self.outCsvPath = outCsvPath
 
 	def writeOutputLogCsv(self):
+		if not os.path.exists(os.path.dirname(self.outCsvPath)):
+			try:
+				os.makedirs(os.path.dirname(self.outCsvPath))
+			except OSError as exc: # Guard against race condition
+				if exc.errno != errno.EEXIST:
+					raise
+
 		with open(self.outCsvPath, 'w', newline='') as csvfile:
 			writer = csv.writer(csvfile, delimiter=';', quoting=csv.QUOTE_ALL)
 
@@ -55,6 +63,6 @@ class CsvWriter():
 					stockPoubelle
 					])
 
-		logging.debug("Output CSV {} written".format(self.outCsvPath))
+		logging.info("Output CSV {} written".format(self.outCsvPath))
 
 		

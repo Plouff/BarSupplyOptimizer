@@ -48,6 +48,6 @@ class BarCsvReader():
 						row[barCountCol], row[lengthCol], row[dateCol]))
 
 
-			logging.debug("Found {} bars".format(self.cutBarCount))
+			logging.info("Found {} bars".format(self.cutBarCount))
 
 			return inputDic

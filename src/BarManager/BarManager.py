@@ -119,9 +119,9 @@ class BarManager:
 			trashLength = trashLength + int(bar.length)
 		logging.info("{} total length trashed ({} cuts trashed)".format(trashLength, trashedBarCount))
 
-		logging.info("The stock is:")
+		logging.debug("The stock is:")
 		for count, bar in enumerate(self.barStock.GetBarsList()):
-			logging.info("    [{}, {}]".format(bar.length, bar.dateIn))
+			logging.debug("    [{}, {}]".format(bar.length, bar.dateIn))
 			stockedBarCount = count
 			stockLength = stockLength + int(bar.length)
 		logging.info("{} total stock length ({} bars in stock) ".format(stockLength, stockedBarCount))

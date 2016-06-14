@@ -9,18 +9,6 @@ Bar Supply Optimizer
 created 02/06/16
 """
 
-TAILLE_DES_BARRES_FOURNISSEUR = 7000
-TAILLE_ENVOI_POUBELLE = 1000
-# User input (in config.ini later)
-csvFilePath = "../Longueurs caissons PE.csv"
-outCsvPath = "../out.csv"
-dateCol = "jour de fab"
-lengthCol = "Longueur profils en mm"
-barCountCol = "Qté Produite"
-
-# /!\ Les dates doivent être dans l'ordre dans le fichier d'entrée
-
-
 # DO NOT EDIT BELOW
 
 import sys
@@ -44,7 +32,7 @@ rootLogger.addHandler(fileHandler)
 from BarManager.BarManager import BarManager
 from CsvManager.BarCsvReader import BarCsvReader
 from CsvManager.CsvWriter import CsvWriter
-
+from ConfigManager.ConfigManager import ConfigManager
 
 """
 Script wrapper
@@ -52,12 +40,30 @@ Script wrapper
 if __name__ == '__main__':
 	cutBarCount = 0
 
-	# Bar CSV reader
-	csvReader = BarCsvReader(csvFilePath)
+	# Config parsing
+	configManager = ConfigManager("../BarSupplyOptimizerConfig.ini")
+	barConfig = configManager.ParseConfig()
+
+	supplierBarLength = barConfig.supplierBarLength
+	toTrashLimit = barConfig.toTrashLimit
+	inputCsvPath = barConfig.inputCsvFile
+	outputCsvPath = barConfig.outputCsv
+	dateCol = barConfig.dateCol
+	lengthCol = barConfig.lengthCol
+	barCountCol = barConfig.barCountCol
+
+	if barConfig.loggingLevel.lower() == "debug":
+		rootLogger.setLevel(logging.DEBUG)
+	else:
+		rootLogger.setLevel(logging.INFO)
+
+	# Input bar CSV reader
+	logging.info("Opening input CSV {}".format(inputCsvPath))
+	csvReader = BarCsvReader(inputCsvPath)
 	inputDic = csvReader.ParseCsv(dateCol, lengthCol, barCountCol)
 
 	# Create a bar manager
-	barManager = BarManager(TAILLE_ENVOI_POUBELLE, TAILLE_DES_BARRES_FOURNISSEUR)
+	barManager = BarManager(toTrashLimit, supplierBarLength)
 
 	# Process input data
 	for currentDate in inputDic.keys():
@@ -74,8 +80,8 @@ if __name__ == '__main__':
 	barManager.PrintFinalResults()
 
 	# Bar CSV writer
-	csvWriter = CsvWriter(outCsvPath, barManager.GetLoggerList())
-	
+	csvWriter = CsvWriter(outputCsvPath, barManager.GetLoggerList())
+
 	csvWriter.writeOutputLogCsv()
 
 
