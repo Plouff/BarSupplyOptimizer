@@ -123,7 +123,7 @@ class BarManager:
 		for count, bar in enumerate(self.barStock.GetBarsList()):
 			logging.info("    [{}, {}]".format(bar.length, bar.dateIn))
 			stockedBarCount = count
-			stockLength = trashLength + int(bar.length)
+			stockLength = stockLength + int(bar.length)
 		logging.info("{} total stock length ({} bars in stock) ".format(stockLength, stockedBarCount))
 
 		waste = 100 * trashLength / supplierLength
