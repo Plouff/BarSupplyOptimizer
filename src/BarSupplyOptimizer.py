@@ -22,9 +22,6 @@ logging.basicConfig(
 
 rootLogger = logging.getLogger()
 
-fileHandler = logging.FileHandler(filename="run.log", mode='w')
-rootLogger.addHandler(fileHandler)
-
 #consoleHandler = logging.StreamHandler()
 #rootLogger.addHandler(consoleHandler)
 
@@ -74,6 +71,10 @@ if __name__ == '__main__':
 	lengthCol = barConfig.lengthCol
 	barCountCol = barConfig.barCountCol
 	optimizerConfig = barConfig.optimizerConfig
+
+	# LogFile setup
+	fileHandler = logging.FileHandler(filename=barConfig.logFile, mode='w')
+	rootLogger.addHandler(fileHandler)
 
 	if barConfig.loggingLevel.lower() == "debug":
 		rootLogger.setLevel(logging.DEBUG)
