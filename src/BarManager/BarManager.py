@@ -27,6 +27,7 @@ class SimulationResult():
 		trashLength,
 		stockLength,
 		stockCount,
+		maxBarInStock,
 		wastePercentage):
 
 		self.supplierBarLength = supplierBarLength
@@ -37,6 +38,7 @@ class SimulationResult():
 		self.trashCount = trashCount
 		self.stockLength = stockLength
 		self.stockCount = stockCount
+		self.maxBarInStock = maxBarInStock
 		self.wastePercentage = round(wastePercentage, 2)
 
 
@@ -127,6 +129,9 @@ class BarManager:
 			bars = self.CutWithBestFitInStockOrNewBar(currentDate, cutLength)
 			self.barLogger.UpdateWithListOfBars(bars)
 
+		# Update the maximum of bar in stock
+		self.barStock.UpdateMaxBarInStockReached()
+
 
 	def ComputeFinalResults(self):
 		trashLength = 0
@@ -152,8 +157,10 @@ class BarManager:
 			logging.debug("    [{}, {}]".format(bar.length, bar.dateIn))
 			stockedBarCount = count
 			stockLength = stockLength + int(bar.length)
-		logging.info("{} total stock length ({} bars in stock) ".format(
+		logging.info("{} total stock length ({} bars in stock)".format(
 			stockLength, stockedBarCount))
+		logging.info("The maximum of bar in stock was {}".format(
+			self.barStock.GetMaxBarReached()))
 
 		waste = 100 * trashLength / supplierLength
 		logging.info("Waste = {} / {} = {:.2f}%".format(trashLength, 
@@ -168,5 +175,6 @@ class BarManager:
 			trashLength,
 			stockLength,
 			stockedBarCount,
+			self.barStock.GetMaxBarReached(),
 			waste)
 		

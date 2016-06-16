@@ -21,12 +21,19 @@ class BarStock():
 		'''
 		self.bars = []
 		self.manager = barManager
+		self.maxBarReached = 0
 
 	def GetBarsList(self):
 		"""
 		Getter for bars
 		"""
 		return self.bars
+
+	def GetMaxBarReached(self):
+		"""
+		Getter for bars
+		"""
+		return self.maxBarReached
 
 	def StockIsEmpty(self):
 		if len(self.bars):
@@ -80,3 +87,7 @@ class BarStock():
 			self.RemoveBarFromStock(bestFitIndex)
 
 		return bestFitCut
+	
+	def UpdateMaxBarInStockReached(self):
+		if len(self.bars) > self.maxBarReached:
+			self.maxBarReached = len(self.bars)

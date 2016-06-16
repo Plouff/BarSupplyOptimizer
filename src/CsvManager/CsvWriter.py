@@ -78,7 +78,7 @@ class CsvWriter():
 			writer.writerow(["Longueur barre neuve", "Limite poubelle",
 				"Nb barres achetées", "Longueur de barres achetées",
 				"Nb barres jetées", "Longueur jetée", "% jeté",
-				"Nb barres en stock", "Longueur du stock"])
+				"Nb barres en stock", "Longueur du stock", "Stock max (nb barres)"])
 			# Write data rows
 			for res in results:
 				writer.writerow([
@@ -90,6 +90,7 @@ class CsvWriter():
 				res.trashLength,
 				res.wastePercentage,
 				res.stockCount,
-				res.stockLength
+				res.stockLength,
+				res.maxBarInStock
 				])
 		logging.info("Output CSV {} written".format(self.outCsvPath))
