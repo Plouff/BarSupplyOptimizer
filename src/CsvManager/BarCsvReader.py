@@ -8,6 +8,7 @@ created 04/06/16
 
 import csv
 import logging
+import os
 from collections import OrderedDict
 
 class BarCsvReader():
@@ -22,25 +23,27 @@ class BarCsvReader():
 			'''
 			self.csvPath = csvPath
 			self.cutBarCount = 0
+			if not os.path.exists(self.csvPath):
+				raise IOError("File not found: {}".format(self.csvPath))
 
 		def ParseCsv(self, dateCol, lengthCol, barCountCol):
 			'''
 			The bar CSV parser
 
-			@return inputDic An OrderedDict of {length1, ..., lengthN} indexed by date
+			@return inputDataDic An OrderedDict of {length1, ..., lengthN} indexed by date
 			'''
-			inputDic = OrderedDict()
+			inputDataDic = OrderedDict()
 
 			with open(self.csvPath, newline='') as csvfile:
 				reader = csv.DictReader(csvfile, dialect='excel', delimiter=';')
 				for row in reader:
 					# If currentDate is empty create empty list
-					if row[dateCol] not in inputDic.keys():
-						inputDic[row[dateCol]] = []
+					if row[dateCol] not in inputDataDic.keys():
+						inputDataDic[row[dateCol]] = []
 
 					# Use the quantity column to add N time the current length
 					for barCount in range(int(row[barCountCol])):
-						inputDic[row[dateCol]].append(int(row[lengthCol]))
+						inputDataDic[row[dateCol]].append(int(row[lengthCol]))
 						# Increment bar count
 						self.cutBarCount = self.cutBarCount + 1
 
@@ -50,4 +53,4 @@ class BarCsvReader():
 
 			logging.info("Found {} bars".format(self.cutBarCount))
 
-			return inputDic
+			return inputDataDic

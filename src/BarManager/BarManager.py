@@ -142,6 +142,8 @@ class BarManager:
 		logging.info("---------------------")
 		logging.info("--- FINAL RESULTS ---")
 		logging.info("---------------------")
+		logging.info("Results with suplier bars of {} and thrash limit of {}".format(
+			self.supplierBarLength, self.toThrashLimit))
 		supplierLength = self.supplierBarIndex * self.supplierBarLength
 		logging.info("{} total supplier length ({} bars bought)".format(
 			supplierLength, self.supplierBarIndex))

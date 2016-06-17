@@ -8,6 +8,7 @@ created: 14 juin 2016
 
 import configparser
 import os.path
+from builtins import IOError
 
 class BarSupplyOptimizerConfig():
 	'''
@@ -50,6 +51,8 @@ class ConfigManager():
 		Constructor
 		'''
 		self.configPath = configPath
+		if not os.path.exists(self.configPath):
+			raise IOError("File not found: {}".format(self.configPath))
 
 	def ParseConfig(self):
 		config = configparser.ConfigParser()
