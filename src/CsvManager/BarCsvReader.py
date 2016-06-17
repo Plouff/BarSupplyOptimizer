@@ -24,7 +24,7 @@ class BarCsvReader():
 			self.csvPath = csvPath
 			self.cutBarCount = 0
 			if not os.path.exists(self.csvPath):
-				raise IOError("File not found: {}".format(self.csvPath))
+				raise FileNotFoundError(self.csvPath)
 
 		def ParseCsv(self, dateCol, lengthCol, barCountCol):
 			'''

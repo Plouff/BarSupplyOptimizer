@@ -47,7 +47,7 @@ def LoadConfiguration(configPath):
 		return barConfig
 	except (KeyboardInterrupt, SystemExit):
 		raise
-	except IOError:
+	except FileNotFoundError:
 		logging.exception("Config file BarSupplyOptimizerConfig.ini not found")
 		ExitWithError()
 	except: # catch all other exceptions
@@ -67,7 +67,7 @@ def ReadInputCsv(barConfig):
 		return inputDataDic
 	except (KeyboardInterrupt, SystemExit):
 		raise
-	except IOError:
+	except FileNotFoundError:
 		logging.exception("Input CSV file '{}' not found".format(barConfig.inputCsvFile))
 		ExitWithError()
 	except: # catch all other exceptions

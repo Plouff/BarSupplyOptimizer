@@ -52,7 +52,7 @@ class ConfigManager():
 		'''
 		self.configPath = configPath
 		if not os.path.exists(self.configPath):
-			raise IOError("File not found: {}".format(self.configPath))
+			raise FileNotFoundError(self.configPath)
 
 	def ParseConfig(self):
 		config = configparser.ConfigParser()
