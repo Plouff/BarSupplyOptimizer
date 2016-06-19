@@ -48,6 +48,9 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QLabel" name="nameColumnLabel">
      <property name="geometry">
@@ -256,6 +259,9 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QLabel" name="detailedOutDirLabel">
      <property name="geometry">
@@ -427,7 +433,7 @@
        <number>6000</number>
       </property>
      </widget>
-     <widget class="QSpinBox" name="toTrashStepLabelSpinBox">
+     <widget class="QSpinBox" name="toTrashStepSpinBox">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -518,25 +524,28 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
     </widget>
    </widget>
    <widget class="QGroupBox" name="commandsGroup">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>290</y>
+      <x>490</x>
+      <y>200</y>
       <width>181</width>
-      <height>121</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="title">
-     <string>Commandes</string>
+     <string>Simulation</string>
     </property>
     <widget class="QPushButton" name="launchButton">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>30</y>
+       <y>20</y>
        <width>141</width>
        <height>23</height>
       </rect>
@@ -549,7 +558,7 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>70</y>
+       <y>50</y>
        <width>141</width>
        <height>23</height>
       </rect>
@@ -585,7 +594,7 @@
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -595,12 +604,36 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="fileMenu">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+    <addaction name="openSettingsAction"/>
+    <addaction name="saveSettingsAction"/>
+   </widget>
+   <addaction name="fileMenu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="enabled">
     <bool>false</bool>
    </property>
   </widget>
+  <action name="openSettingsAction">
+   <property name="text">
+    <string>Ouvrir configuration...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="saveSettingsAction">
+   <property name="text">
+    <string>Sauvegarder configuration...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>

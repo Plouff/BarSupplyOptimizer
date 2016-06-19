@@ -9,10 +9,12 @@ created 18/06/16
 import sys
 import os
 # Import PyQt modules
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 
-import design
-import helpers
+from QtGui import design
+from QtGui import helpers
+from QtGui.MenuBarManager import MenuBarManager
+
 
 class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
 	"""
@@ -21,7 +23,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
 	def __init__(self, parent=None):
 		"""
 		Constructor
-		
+
 		It calls parent mainWindow setupUi to initialize the window from the .ui
 		"""
 		super(MainWindow, self).__init__(parent)
@@ -29,6 +31,9 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
 		self.inputFile = ""
 		self.detailedOutDir = ""
 		self.optimizationOutDir = ""
+
+		# Menu bar manager
+		self.menuBarManager = MenuBarManager(self)
 
 		# Connect signal and slots
 		self.SignalSlotConnection()
@@ -40,6 +45,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
 		self.chooseInputFileButton.pressed.connect(self.chooseInputFile)
 		self.chooseDetailedOutDirButton.pressed.connect(self.chooseDetailedOutputDir)
 		self.chooseOutputDirButton.pressed.connect(self.chooseOptimizationOutputDir)
+		self.fileMenu.triggered[QtWidgets.QAction].connect(self.menuBarManager.processFileMenu)
 
 	def chooseInputFile(self):
 		"""
