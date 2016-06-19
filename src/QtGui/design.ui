@@ -11,10 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>BarSupplyOptimizer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="groupBox">
+   <widget class="QGroupBox" name="inputFileGroup">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -26,7 +26,7 @@
     <property name="title">
      <string>Fichier d'entrée</string>
     </property>
-    <widget class="QToolButton" name="toolButton">
+    <widget class="QToolButton" name="chooseInputFileButton">
      <property name="geometry">
       <rect>
        <x>170</x>
@@ -39,7 +39,7 @@
       <string>...</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="inputCsvLineEdit">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -49,7 +49,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLabel" name="label_14">
+    <widget class="QLabel" name="nameColumnLabel">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -62,7 +62,7 @@
       <string>Nom colonne date</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_4">
+    <widget class="QLineEdit" name="nameColumnLineEdit">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -72,7 +72,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_5">
+    <widget class="QLineEdit" name="lengthColumnLineEdit">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -82,7 +82,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLabel" name="label_15">
+    <widget class="QLabel" name="lengthColumnLabel">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -95,7 +95,7 @@
       <string>Nom colonne longueur</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_16">
+    <widget class="QLabel" name="quantityColumnLabel">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -108,7 +108,7 @@
       <string>Nom colonne quantité</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_6">
+    <widget class="QLineEdit" name="quantityColumnLineEdit">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -119,7 +119,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_2">
+   <widget class="QGroupBox" name="simulationGroup">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -131,20 +131,7 @@
     <property name="title">
      <string>Simulation</string>
     </property>
-    <widget class="QRadioButton" name="radioButton">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>82</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Détaillée</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="radioButton_2">
+    <widget class="QRadioButton" name="detailedSimRadioButton">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -154,11 +141,30 @@
       </rect>
      </property>
      <property name="text">
+      <string>Détaillée</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="optimizationRadioButton">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>82</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
       <string>Optimisation</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_3">
+   <widget class="QGroupBox" name="detailedSimGroup">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -170,7 +176,7 @@
     <property name="title">
      <string>Simulation Détaillée</string>
     </property>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="supplierBarLengthLabel">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -183,7 +189,7 @@
       <string>Taille barres fournisseur</string>
      </property>
     </widget>
-    <widget class="QSpinBox" name="spinBox">
+    <widget class="QSpinBox" name="supplierBarLengthSpinBox">
      <property name="geometry">
       <rect>
        <x>140</x>
@@ -199,7 +205,7 @@
       <number>7000</number>
      </property>
     </widget>
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="toTrashLabel">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -212,7 +218,7 @@
       <string>Limite poubelle</string>
      </property>
     </widget>
-    <widget class="QSpinBox" name="spinBox_2">
+    <widget class="QSpinBox" name="toTrashSpinBox">
      <property name="geometry">
       <rect>
        <x>140</x>
@@ -228,7 +234,7 @@
       <number>1200</number>
      </property>
     </widget>
-    <widget class="QToolButton" name="toolButton_2">
+    <widget class="QToolButton" name="chooseDetailedOutDirButton">
      <property name="geometry">
       <rect>
        <x>180</x>
@@ -241,7 +247,7 @@
       <string>...</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="detailedDirLine">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -251,7 +257,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLabel" name="label_12">
+    <widget class="QLabel" name="detailedOutDirLabel">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -265,7 +271,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_4">
+   <widget class="QGroupBox" name="optimizationGroup">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -277,7 +283,7 @@
     <property name="title">
      <string>Mode Optimisation</string>
     </property>
-    <widget class="QGroupBox" name="groupBox_5">
+    <widget class="QGroupBox" name="optimSupplierBarConfigGroup">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -289,7 +295,7 @@
      <property name="title">
       <string>Taille barre fournisseur</string>
      </property>
-     <widget class="QSpinBox" name="spinBox_3">
+     <widget class="QSpinBox" name="supplierBarLengthMaxSpinBox">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -305,7 +311,7 @@
        <number>8000</number>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_4">
+     <widget class="QSpinBox" name="supplierBarLengthMinSpinBox">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -321,7 +327,7 @@
        <number>6000</number>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_5">
+     <widget class="QSpinBox" name="supplierBarLengthStepSpinBox">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -337,7 +343,7 @@
        <number>50</number>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="supplierBarLengthMinLabel">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -350,7 +356,7 @@
        <string>minimum</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="supplierBarLengthMaxLabel">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -363,7 +369,7 @@
        <string>maximum</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="supplierBarLengthStepLabel">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -377,7 +383,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QGroupBox" name="groupBox_6">
+    <widget class="QGroupBox" name="optimTrashConfigGroup">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -389,7 +395,7 @@
      <property name="title">
       <string>Limite poubelle</string>
      </property>
-     <widget class="QSpinBox" name="spinBox_9">
+     <widget class="QSpinBox" name="toTrashMaxSpinBox">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -405,7 +411,7 @@
        <number>8000</number>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_10">
+     <widget class="QSpinBox" name="toTrashMinSpinBox">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -421,7 +427,7 @@
        <number>6000</number>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_11">
+     <widget class="QSpinBox" name="toTrashStepLabelSpinBox">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -437,7 +443,7 @@
        <number>50</number>
       </property>
      </widget>
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="toTrashMinLabel">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -450,7 +456,7 @@
        <string>minimum</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_10">
+     <widget class="QLabel" name="toTrashMaxLabel">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -463,7 +469,7 @@
        <string>maximum</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_11">
+     <widget class="QLabel" name="toTrashStepLabel">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -477,7 +483,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QToolButton" name="toolButton_3">
+    <widget class="QToolButton" name="chooseOutputDirButton">
      <property name="geometry">
       <rect>
        <x>170</x>
@@ -490,7 +496,7 @@
       <string>...</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_13">
+    <widget class="QLabel" name="outputDirLabel">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -503,7 +509,7 @@
       <string>Répertoire de sortie</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_3">
+    <widget class="QLineEdit" name="outputDirLineEdit">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -514,7 +520,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_7">
+   <widget class="QGroupBox" name="commandsGroup">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -526,7 +532,7 @@
     <property name="title">
      <string>Commandes</string>
     </property>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="launchButton">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -539,7 +545,7 @@
       <string>Lancer</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="openLogButton">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -553,7 +559,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_8">
+   <widget class="QGroupBox" name="consoleGroup">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -565,7 +571,7 @@
     <property name="title">
      <string>Console</string>
     </property>
-    <widget class="QPlainTextEdit" name="plainTextEdit">
+    <widget class="QPlainTextEdit" name="console">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -578,6 +584,9 @@
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -587,8 +596,45 @@
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+  </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>detailedSimRadioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>detailedSimGroup</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>311</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>531</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>optimizationRadioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>optimizationGroup</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>260</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
