@@ -9,5 +9,4 @@ The Qt GUI for the application
 The Qt GUI for the application
 """
 # List of modules
-__all__ = ['BarSupplyOptimizerGui.py', 'design.py', 'helpers.py',
-	'MenuBarManager.py']
+__all__ = ['design.py', 'helpers.py', 'MenuBarManager.py']

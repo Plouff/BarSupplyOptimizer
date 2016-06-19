@@ -79,7 +79,7 @@ class MenuBarManager():
 	def ApplyGuiSettings(self):
 		self.settings.beginGroup("inputFileGroup")
 		self.parent.inputCsvLineEdit.setText(self.settings.value("inputCsvLineEdit"))
-		self.parent.nameColumnLineEdit.setText(self.settings.value("nameColumnLineEdit"))
+		self.parent.dateColumnLineEdit.setText(self.settings.value("dateColumnLineEdit"))
 		self.parent.lengthColumnLineEdit.setText(self.settings.value("lengthColumnLineEdit"))
 		self.parent.quantityColumnLineEdit.setText(self.settings.value("quantityColumnLineEdit"))
 		self.settings.endGroup()
@@ -113,7 +113,7 @@ class MenuBarManager():
 	def WriteSettings(self):
 		self.settings.beginGroup("inputFileGroup")
 		self.settings.setValue("inputCsvLineEdit", self.parent.inputCsvLineEdit.text())
-		self.settings.setValue("nameColumnLineEdit", self.parent.nameColumnLineEdit.text())
+		self.settings.setValue("dateColumnLineEdit", self.parent.dateColumnLineEdit.text())
 		self.settings.setValue("lengthColumnLineEdit", self.parent.lengthColumnLineEdit.text())
 		self.settings.setValue("quantityColumnLineEdit", self.parent.quantityColumnLineEdit.text())
 		self.settings.endGroup()

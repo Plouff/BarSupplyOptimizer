@@ -13,7 +13,6 @@ created 02/06/16
 
 import sys
 import logging
-import os
 
 loggingLevel = logging.DEBUG
 logging.basicConfig(
@@ -60,15 +59,19 @@ def ReadInputCsv(barConfig):
 	Read input CSV
 	"""
 	try:
-		csvReader = BarCsvReader(barConfig.inputCsvFile)
-		logging.info("Opening input CSV {}".format(barConfig.inputCsvFile))
-		inputDataDic = csvReader.ParseCsv(barConfig.dateCol, barConfig.lengthCol,
-			barConfig.barCountCol)
+		csvReader = BarCsvReader(barConfig.inputFileConfig.inputFile)
+		logging.info("Opening input CSV {}".format(
+			barConfig.inputFileConfig.inputFile))
+
+		inputDataDic = csvReader.ParseCsv(barConfig.inputFileConfig.dateCol,
+			barConfig.inputFileConfig.lengthCol,
+			barConfig.inputFileConfig.barCountCol)
 		return inputDataDic
 	except (KeyboardInterrupt, SystemExit):
 		raise
 	except FileNotFoundError:
-		logging.exception("Input CSV file '{}' not found".format(barConfig.inputCsvFile))
+		logging.exception("Input CSV file '{}' not found".format(
+			barConfig.inputFileConfig.inputCsvFile))
 		ExitWithError()
 	except: # catch all other exceptions
 		logging.exception("Couldn't load input CSV check BarSupplyOptimizerConfig.ini")
@@ -103,24 +106,25 @@ def LaunchSimulation(barConfig, inputDataDic):
 	"""
 	Launch simulation
 	"""
-	if not barConfig.optimizerConfig['optimizerEnabled']:
+	if not barConfig.optimizationEnabled:
 		#
 		# Launch one simulation
 		#
 		try:
-			barManager = RunAnalysis(inputDataDic, barConfig.toTrashLimit,
-				barConfig.supplierBarLength)
+			barManager = RunAnalysis(inputDataDic,
+				barConfig.detailedRunConfig.toTrashLimit,
+				barConfig.detailedRunConfig.supplierBarLength)
 		except: # catch all other exceptions
 			logging.exception("Simulation failed (see detail below)")
 			ExitWithError()
 
 		# Bar CSV writer
-		csvWriter = CsvWriter(barConfig.outputCsv)
+		csvWriter = CsvWriter(barConfig.detailedRunConfig.outputCsv)
 		try:
 			csvWriter.writeDetailedLogCsv(barManager.GetLoggerList())
 		except: # catch all other exceptions
 			logging.exception("Failed to write output CSV '{}' (see detail below)".format(
-				barConfig.outputCsv))
+				barConfig.detailedRunConfig.outputCsv))
 			ExitWithError()
 
 	else:
@@ -129,13 +133,13 @@ def LaunchSimulation(barConfig, inputDataDic):
 		#
 		results = []
 		for supplierBarLength in range(
-				barConfig.optimizerConfig['supplierLengthMin'],
-				barConfig.optimizerConfig['supplierLengthMax'],
-				barConfig.optimizerConfig['supplierLengthStep']):
+				barConfig.optimizationRunConfig.supplierBarLengthMin,
+				barConfig.optimizationRunConfig.supplierBarLengthMax+1,
+				barConfig.optimizationRunConfig.supplierBarLengthStep):
 			for toTrashLimit in range(
-					barConfig.optimizerConfig['toTrashLengthMin'],
-					barConfig.optimizerConfig['toTrashLengthMax'],
-					barConfig.optimizerConfig['toTrashLengthStep']):
+					barConfig.optimizationRunConfig.toTrashLimitMin,
+					barConfig.optimizationRunConfig.toTrashLimitMax+1,
+					barConfig.optimizationRunConfig.toTrashLimitStep):
 				try:
 					barManager = RunAnalysis(inputDataDic, toTrashLimit, supplierBarLength)
 				except: # catch all other exceptions
@@ -143,16 +147,16 @@ def LaunchSimulation(barConfig, inputDataDic):
 					ExitWithError()
 				results.append(barManager.results)
 
-		csvWriter = CsvWriter(barConfig.outputCsv)
+		csvWriter = CsvWriter(barConfig.optimizationRunConfig.outputCsv)
 		try:
 			csvWriter.writeOptimizationCsv(results)
 		except PermissionError:
 			logging.exception("No permission to write output CSV '{}' (check if the file is readonly or owned by someone else)".format(
-				barConfig.outputCsv))
+				barConfig.optimizationRunConfig.outputCsv))
 			ExitWithError()
 		except: # catch all other exceptions
 			logging.exception("Failed to write output CSV '{}' (see detail below)".format(
-				barConfig.outputCsv))
+				barConfig.optimizationRunConfig.outputCsv))
 			ExitWithError()
 
 """
