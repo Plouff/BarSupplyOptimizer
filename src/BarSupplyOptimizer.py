@@ -14,6 +14,8 @@ created 02/06/16
 import sys
 import logging
 
+configFile = "BarSupplyOptimizerScriptConfig.ini"
+
 loggingLevel = logging.DEBUG
 logging.basicConfig(
 	format='%(levelname)s: %(message)s',
@@ -166,7 +168,7 @@ if __name__ == '__main__':
 	cutBarCount = 0
 
 	# Config parsing
-	barConfig = LoadConfiguration("../BarSupplyOptimizerConfig.ini")
+	barConfig = LoadConfiguration(configFile)
 	# LogFile setup
 	fileHandler = logging.FileHandler(filename=barConfig.logFile, mode='w')
 	rootLogger.addHandler(fileHandler)

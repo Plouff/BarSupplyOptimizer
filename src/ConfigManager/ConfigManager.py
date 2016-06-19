@@ -26,10 +26,13 @@ class DetailedRunConfig():
 	def __init__(self, supplierBarLength, toTrashLimit, outputDir, inputCsvFile):
 		self.supplierBarLength = supplierBarLength
 		self.toTrashLimit = toTrashLimit
-		self.outputDir = outputDir
+		self.outputDir = outputDir.strip()
 		self.outputCsvName = "{}_{}_{}.csv".format(
 			os.path.splitext(os.path.basename(inputCsvFile))[0],
 			supplierBarLength, toTrashLimit)
+		# To avoid looking from /
+		if outputDir == "":
+			outputDir = '.'
 		self.outputCsv = "{}/{}".format(outputDir, self.outputCsvName)
 
 class OptimizationRunConfig():
@@ -46,11 +49,15 @@ class OptimizationRunConfig():
 		self.toTrashLimitMin = toTrashLimitMin
 		self.toTrashLimitMax = toTrashLimitMax
 		self.toTrashLimitStep = toTrashLimitStep
-		self.outputDir = outputDir
+		self.outputDir = outputDir.strip()
 		self.outputCsvName = "{}_fournisseur_{}_{}_{}__poubelle_{}_{}_{}.csv".format(
 			os.path.splitext(os.path.basename(inputCsvFile))[0],
 			supplierBarLengthMin, supplierBarLengthMax, supplierBarLengthStep,
 			toTrashLimitMin, toTrashLimitMax, toTrashLimitStep)
+
+		# To avoid looking from /
+		if outputDir == "":
+			outputDir = '.'
 		self.outputCsv = "{}/{}".format(outputDir, self.outputCsvName)
 
 
@@ -103,6 +110,9 @@ class ConfigManager():
 			modeOptimizerEnabled = False
 
 		logFile = config['Configuration']['logFile']
+		# To avoid looking from /
+		if configDir == "":
+			configDir = '.'
 		logFile = "{}/{}".format(configDir, logFile)
 
 		#

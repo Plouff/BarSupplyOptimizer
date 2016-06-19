@@ -71,7 +71,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
 		"""
 		filters = "Fichier CSV (*.csv);;Fichier texte (*.txt);;Tous les fichiers (*)"
 		inputFile = QtWidgets.QFileDialog.getOpenFileName(
-			parent=self, caption='CSV d\'entrée', directory='..', filter=filters,
+			parent=self, caption='CSV d\'entrée', directory='.', filter=filters,
 			initialFilter=None, options=QtWidgets.QFileDialog.DontResolveSymlinks)
 
 		# Extract input file
@@ -87,7 +87,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
 		Opens a QFileDialog to select the detailed results directory
 		"""
 		detailedOutDir = QtWidgets.QFileDialog.getExistingDirectory(
-			parent=self, caption='Répertoire de résultats détaillés', directory='..',
+			parent=self, caption='Répertoire de résultats détaillés', directory='.',
 			options=QtWidgets.QFileDialog.ShowDirsOnly | QtWidgets.QFileDialog.DontResolveSymlinks)
 
 		# Update object variable and line edit
@@ -100,7 +100,7 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
 		Opens a QFileDialog to select the optimization results directory
 		"""
 		optimizationOutDir = QtWidgets.QFileDialog.getExistingDirectory(
-			parent=self, caption="Répertoire de résultats d'optimization", directory='..',
+			parent=self, caption="Répertoire de résultats d'optimization", directory='.',
 			options=QtWidgets.QFileDialog.ShowDirsOnly | QtWidgets.QFileDialog.DontResolveSymlinks)
 
 		# Update object variable and line edit
