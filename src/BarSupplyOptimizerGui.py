@@ -15,14 +15,18 @@ import logging
 from PyQt5 import QtWidgets
 
 # Import application modules
+import BarSupplyOptimizer
+
 from QtGui import design
 from QtGui import helpers
 from QtGui.MenuBarManager import MenuBarManager
-import BarSupplyOptimizer
+import QtGui.PyQtLogger as PyQtLogger
+
 from ConfigManager.ConfigManager import InputFileConfig
 from ConfigManager.ConfigManager import DetailedRunConfig
 from ConfigManager.ConfigManager import OptimizationRunConfig
 from ConfigManager.ConfigManager import BarSupplyOptimizerConfig
+
 
 
 logging.basicConfig(
@@ -54,6 +58,12 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
 		# Connect signal and slots
 		self.SignalSlotConnection()
+
+		# Console management
+		pyQtHandler = PyQtLogger.QtHandler()
+		rootLogger.addHandler(pyQtHandler)
+		PyQtLogger.XStream.stdout().messageWritten.connect( self.console.appendPlainText )
+		PyQtLogger.XStream.stderr().messageWritten.connect( self.console.appendPlainText )
 
 	def SignalSlotConnection(self):
 		"""
