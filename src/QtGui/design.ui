@@ -14,586 +14,546 @@
    <string>BarSupplyOptimizer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="inputFileGroup">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>201</width>
-      <height>211</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Fichier d'entrée</string>
-    </property>
-    <widget class="QToolButton" name="chooseInputFileButton">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>20</y>
-       <width>25</width>
-       <height>19</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>...</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="inputCsvLineEdit">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>151</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="dateColumnLabel">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Nom colonne date</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="dateColumnLineEdit">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>70</y>
-       <width>181</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lengthColumnLineEdit">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>181</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lengthColumnLabel">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>100</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Nom colonne longueur</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="quantityColumnLabel">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>150</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Nom colonne quantité</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="quantityColumnLineEdit">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>170</y>
-       <width>181</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="simulationGroup">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>240</y>
-      <width>191</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Simulation</string>
-    </property>
-    <widget class="QRadioButton" name="detailedSimRadioButton">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>40</y>
-       <width>82</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Détaillée</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="optimizationRadioButton">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>82</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Optimisation</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="detailedSimGroup">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>30</y>
-      <width>231</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Simulation Détaillée</string>
-    </property>
-    <widget class="QLabel" name="supplierBarLengthLabel">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Taille barres fournisseur</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="supplierBarLengthSpinBox">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>30</y>
-       <width>71</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="maximum">
-      <number>99999</number>
-     </property>
-     <property name="value">
-      <number>7000</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="toTrashLabel">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>70</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Limite poubelle</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="toTrashSpinBox">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>70</y>
-       <width>71</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="maximum">
-      <number>99999</number>
-     </property>
-     <property name="value">
-      <number>1200</number>
-     </property>
-    </widget>
-    <widget class="QToolButton" name="chooseDetailedOutDirButton">
-     <property name="geometry">
-      <rect>
-       <x>180</x>
-       <y>120</y>
-       <width>25</width>
-       <height>19</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>...</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="detailedDirLine">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>120</y>
-       <width>113</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="detailedOutDirLabel">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>100</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Répertoire de sortie</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="optimizationGroup">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>20</y>
-      <width>211</width>
-      <height>381</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Mode Optimisation</string>
-    </property>
-    <widget class="QGroupBox" name="optimSupplierBarConfigGroup">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>181</width>
-       <height>141</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>Taille barre fournisseur</string>
-     </property>
-     <widget class="QSpinBox" name="supplierBarLengthMaxSpinBox">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>60</y>
-        <width>71</width>
-        <height>22</height>
-       </rect>
+   <layout class="QHBoxLayout" name="horizontalLayout_9">
+    <item>
+     <widget class="QSplitter" name="splitter_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
       </property>
-      <property name="maximum">
-       <number>99999</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="supplierBarLengthMinSpinBox">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>20</y>
-        <width>71</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="acceptDrops">
+      <property name="childrenCollapsible">
        <bool>false</bool>
       </property>
-      <property name="maximum">
-       <number>99999</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="childrenCollapsible">
+        <bool>false</bool>
+       </property>
+       <widget class="QWidget" name="">
+        <layout class="QVBoxLayout" name="verticalLayout_17">
+         <item>
+          <widget class="QGroupBox" name="inputFileGroup">
+           <property name="title">
+            <string>Fichier d'entrée</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_10">
+                <item>
+                 <widget class="QLineEdit" name="inputCsvLineEdit">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="chooseInputFileButton">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <widget class="QLabel" name="dateColumnLabel">
+                  <property name="text">
+                   <string>Nom colonne date</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="dateColumnLineEdit"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_8">
+                <item>
+                 <widget class="QLabel" name="lengthColumnLabel">
+                  <property name="text">
+                   <string>Nom colonne longueur</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lengthColumnLineEdit"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_9">
+                <item>
+                 <widget class="QLabel" name="quantityColumnLabel">
+                  <property name="text">
+                   <string>Nom colonne quantité</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="quantityColumnLineEdit"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <layout class="QVBoxLayout" name="verticalLayout_16">
+         <item>
+          <widget class="QGroupBox" name="detailedSimGroup">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="title">
+            <string>Simulation Détaillée</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_19">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_12">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_12">
+                <item>
+                 <widget class="QLabel" name="supplierBarLengthLabel">
+                  <property name="text">
+                   <string>Taille barres fournisseur</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="supplierBarLengthSpinBox">
+                  <property name="maximum">
+                   <number>99999</number>
+                  </property>
+                  <property name="value">
+                   <number>7000</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_13">
+                <item>
+                 <widget class="QLabel" name="toTrashLabel">
+                  <property name="text">
+                   <string>Limite poubelle</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="toTrashSpinBox">
+                  <property name="maximum">
+                   <number>99999</number>
+                  </property>
+                  <property name="value">
+                   <number>1200</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_11">
+                <item>
+                 <widget class="QLabel" name="detailedOutDirLabel">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Répertoire de sortie</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_14">
+                  <item>
+                   <widget class="QLineEdit" name="detailedDirLine">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QToolButton" name="chooseDetailedOutDirButton">
+                    <property name="text">
+                     <string>...</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="optimizationGroup">
+           <property name="title">
+            <string>Mode Optimisation</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_20">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout">
+                <item>
+                 <widget class="QLabel" name="outputDirLabel">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Répertoire de sortie</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout">
+                  <item>
+                   <widget class="QLineEdit" name="outputDirLineEdit">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QToolButton" name="chooseOutputDirButton">
+                    <property name="text">
+                     <string>...</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QGroupBox" name="optimSupplierBarConfigGroup">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>120</height>
+                   </size>
+                  </property>
+                  <property name="title">
+                   <string>Taille barre fournisseur</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_22">
+                   <item>
+                    <layout class="QVBoxLayout" name="verticalLayout_3">
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_3">
+                       <item>
+                        <widget class="QLabel" name="supplierBarLengthMinLabel">
+                         <property name="text">
+                          <string>minimum</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="supplierBarLengthMinSpinBox">
+                         <property name="acceptDrops">
+                          <bool>false</bool>
+                         </property>
+                         <property name="maximum">
+                          <number>99999</number>
+                         </property>
+                         <property name="value">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_4">
+                       <item>
+                        <widget class="QLabel" name="supplierBarLengthMaxLabel">
+                         <property name="text">
+                          <string>maximum</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="supplierBarLengthMaxSpinBox">
+                         <property name="maximum">
+                          <number>99999</number>
+                         </property>
+                         <property name="value">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_5">
+                       <item>
+                        <widget class="QLabel" name="supplierBarLengthStepLabel">
+                         <property name="text">
+                          <string>pas</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="supplierBarLengthStepSpinBox">
+                         <property name="maximum">
+                          <number>99999</number>
+                         </property>
+                         <property name="value">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                  <zorder>supplierBarLengthMaxSpinBox</zorder>
+                  <zorder>supplierBarLengthMinSpinBox</zorder>
+                  <zorder>supplierBarLengthStepSpinBox</zorder>
+                  <zorder>supplierBarLengthMinLabel</zorder>
+                  <zorder>supplierBarLengthMaxLabel</zorder>
+                  <zorder>supplierBarLengthStepLabel</zorder>
+                  <zorder>chooseOutputDirButton</zorder>
+                  <zorder>outputDirLabel</zorder>
+                  <zorder>outputDirLineEdit</zorder>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="optimTrashConfigGroup">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>120</height>
+                   </size>
+                  </property>
+                  <property name="title">
+                   <string>Limite poubelle</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_21">
+                   <item>
+                    <layout class="QVBoxLayout" name="verticalLayout_4">
+                     <property name="sizeConstraint">
+                      <enum>QLayout::SetMinimumSize</enum>
+                     </property>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_6">
+                       <item>
+                        <widget class="QLabel" name="toTrashMinLabel">
+                         <property name="text">
+                          <string>minimum</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="toTrashMinSpinBox">
+                         <property name="maximum">
+                          <number>99999</number>
+                         </property>
+                         <property name="value">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_7">
+                       <item>
+                        <widget class="QLabel" name="toTrashMaxLabel">
+                         <property name="text">
+                          <string>maximum</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="toTrashMaxSpinBox">
+                         <property name="maximum">
+                          <number>99999</number>
+                         </property>
+                         <property name="value">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_8">
+                       <item>
+                        <widget class="QLabel" name="toTrashStepLabel">
+                         <property name="text">
+                          <string>pas</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="toTrashStepSpinBox">
+                         <property name="maximum">
+                          <number>99999</number>
+                         </property>
+                         <property name="value">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+           <zorder>optimSupplierBarConfigGroup</zorder>
+           <zorder>optimTrashConfigGroup</zorder>
+           <zorder>chooseOutputDirButton</zorder>
+           <zorder>outputDirLabel</zorder>
+           <zorder>outputDirLineEdit</zorder>
+           <zorder></zorder>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <layout class="QVBoxLayout" name="verticalLayout_18">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_15">
+           <item>
+            <widget class="QGroupBox" name="simulationGroup">
+             <property name="title">
+              <string>Simulation</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QRadioButton" name="optimizationRadioButton">
+                  <property name="text">
+                   <string>Optimisation</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="detailedSimRadioButton">
+                  <property name="text">
+                   <string>Détaillée</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="commandsGroup">
+             <property name="title">
+              <string>Simulation</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_14">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_13">
+                <item>
+                 <widget class="QPushButton" name="launchButton">
+                  <property name="text">
+                   <string>Lancer</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="openLogButton">
+                  <property name="text">
+                   <string>Ouvrir fichier simulation</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="consoleGroup">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>150</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Console</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_18">
+        <item>
+         <widget class="QPlainTextEdit" name="console"/>
+        </item>
+       </layout>
+       <zorder>console</zorder>
+       <zorder>optimizationGroup</zorder>
+      </widget>
      </widget>
-     <widget class="QSpinBox" name="supplierBarLengthStepSpinBox">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>100</y>
-        <width>71</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="maximum">
-       <number>99999</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QLabel" name="supplierBarLengthMinLabel">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>minimum</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="supplierBarLengthMaxLabel">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>maximum</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="supplierBarLengthStepLabel">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>100</y>
-        <width>51</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>pas</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QGroupBox" name="optimTrashConfigGroup">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>170</y>
-       <width>181</width>
-       <height>141</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>Limite poubelle</string>
-     </property>
-     <widget class="QSpinBox" name="toTrashMaxSpinBox">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>60</y>
-        <width>71</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="maximum">
-       <number>99999</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="toTrashMinSpinBox">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>20</y>
-        <width>71</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="maximum">
-       <number>99999</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="toTrashStepSpinBox">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>100</y>
-        <width>71</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="maximum">
-       <number>99999</number>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-     <widget class="QLabel" name="toTrashMinLabel">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>61</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>minimum</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="toTrashMaxLabel">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>maximum</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="toTrashStepLabel">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>100</y>
-        <width>61</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>pas</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QToolButton" name="chooseOutputDirButton">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>340</y>
-       <width>25</width>
-       <height>19</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>...</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="outputDirLabel">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>320</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Répertoire de sortie</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="outputDirLineEdit">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>340</y>
-       <width>113</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="commandsGroup">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>200</y>
-      <width>181</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Simulation</string>
-    </property>
-    <widget class="QPushButton" name="launchButton">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>141</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Lancer</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="openLogButton">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>50</y>
-       <width>141</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Ouvrir fichier simulation</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="consoleGroup">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>420</y>
-      <width>721</width>
-      <height>241</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Console</string>
-    </property>
-    <widget class="QPlainTextEdit" name="console">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>721</width>
-       <height>221</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="enabled">
